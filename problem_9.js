@@ -72,26 +72,54 @@
 // and then I just played guess and check. I have yet to get the answer.
 // This would be an exponential graph. and it will have a linear intersect.
 
-a = 279;
-b = 306;
-c = 415;
+// a = 279;
+// b = 306;
+// c = 415;
 
 
-function getGap(a, b, c) {
-    num = c*c - (a*a + b*b);
-    console.log(`Gap: ${num} (a: ${a}, b: ${b}, c: ${c})`);
-    return num;
+// function getGap(a, b, c) {
+//     num = c*c - (a*a + b*b);
+//     console.log(`Gap: ${num} (a: ${a}, b: ${b}, c: ${c})`);
+//     return num;
+// }
+
+// function checkSum(a, b, c) {
+//     if (a + b + c === 1000) {
+//         return true;
+//     } else {    
+//         return false;
+//     }
+// }
+
+// number = getGap(a, b, c);
+// console.log(checkSum(a, b, c));
+
+// // at this point, I need to move on to problem 10.
+
+/** Restart on 11/12 */
+
+function isPythag(a, b) {
+    return Number.isInteger(getC(a, b));
 }
 
-function checkSum(a, b, c) {
-    if (a + b + c === 1000) {
-        return true;
-    } else {    
-        return false;
+function isSum(a, b, c) {
+    return a + b + c === 1000;
+}
+
+function getC(a, b) {
+    return Math.sqrt(a*a + b*b);
+}
+
+for (let i = 1; i < 1000; i++) {
+    for (let j = i + 1; j < 1000; j++) {
+
+        if(isPythag(i, j)) {
+            if(isSum(i, j, getC(i, j))) {
+                console.log(`Sum: ${i}, ${j}, ${getC(i, j)}`);
+                console.log(`Product: ${i * j * getC(i, j)}`);
+            }
+        }
     }
 }
 
-number = getGap(a, b, c);
-console.log(checkSum(a, b, c));
-
-// at this point, I need to move on to problem 10.
+// Answer: 31875000 Finished!!!
